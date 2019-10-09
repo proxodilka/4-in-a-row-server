@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const {Rooms} = require('./Rooms');
+const {Rooms} = require('./rooms');
 const io = require('socket.io')(4001);
 
 
