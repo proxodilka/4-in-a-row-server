@@ -146,6 +146,7 @@ class Game{
         this.curePlayer = initValue.curePlayer;
         //this.players = initValue.players;
         this.winState = initValue.winState;
+        this.lastMoveInitiator = 0;
         this._execEvent('game-updated', this.getInfo());
         this._execEvent('status-changed', this.gameStatus);
         console.log(this.gameStatus);

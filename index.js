@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
+const path = require('path');
 const bodyParser = require('body-parser');
 const {Rooms} = require('./rooms');
 
@@ -9,17 +10,18 @@ const PORT = process.env.PORT || 80;
 
 const app = express();
 app.use(cors());
-app.use(bodyParser());
-
-app.get('/', (req,res)=>{
-    res.send('hello!');
-});
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const server = http.createServer(app);
 server.listen(PORT, ()=>{
     console.log(`running at port ${PORT}`);
 });
 const io = require('socket.io')(server);
+
+app.get('/', (req, res)=>{
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
 
 const rooms = new Rooms();
 
