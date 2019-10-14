@@ -165,8 +165,35 @@ class Game{
 
     }
 
+    removeListener(eventName, listener){
+        switch (typeof(listener)){
+            case 'string':{
+
+                break;
+            }
+
+            case 'function':{
+
+                break;
+            }
+            
+            default:{
+                return;
+            }
+        }
+        if (typeof listener==='string'){
+
+        }
+    }
+
     _execEvent(eventName, ...args){
-        const eventListeners = this.eventHandler[eventName];
+        const event = this.eventHandler[eventName];
+        if (!event){
+            return;
+        }
+
+
+        const eventListeners = event;
         this.lastActionEvent = Date.now();
         console.log('executing event', eventName, eventListeners, this.eventHandler);
         for(let event of eventListeners || []){

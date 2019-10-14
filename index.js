@@ -105,7 +105,10 @@ const move = ({moveInfo: {columnId, action}, roomInfo: {roomId}}, socket, callba
 }
 
 const restart = ({roomId}, socket)=>{
-    rooms.getRoom(roomId).restart();
+    const game = rooms.getRoom(roomId);
+    if (game.gameStatus==='ended'){
+        game.restart();
+    }
 }
 
 io.on('connection', socket=>{

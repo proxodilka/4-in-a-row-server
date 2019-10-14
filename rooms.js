@@ -18,8 +18,6 @@ class Rooms{
         this._execEvent('rooms-updated');
 
         const eventListeners = this.eventHandler['rooms-updated'] || [];
-
-        //console.log('room-created', eventListeners, this.eventHandler);
         for(let event of eventListeners){
             game.on('status-changed', event);
         }
