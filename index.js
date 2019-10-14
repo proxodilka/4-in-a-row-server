@@ -127,4 +127,8 @@ io.on('connection', socket=>{
 
 tryToCreateRoom({roomName: 'test-room'});
 
-// app.listen(4000);
+app.listen(4000);
+
+app.get('/', (req,res)=>{
+    res.send('hello!');
+})
