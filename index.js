@@ -1,13 +1,25 @@
 const express = require('express');
 const cors = require('cors');
+const http = require('http');
 const bodyParser = require('body-parser');
 const {Rooms} = require('./rooms');
-const io = require('socket.io')(4001);
+
+const PORT = process.env.PORT || 80;
 
 
 const app = express();
 app.use(cors());
 app.use(bodyParser());
+
+app.get('/', (req,res)=>{
+    res.send('hello!');
+});
+
+const server = http.createServer(app);
+server.listen(PORT, ()=>{
+    console.log(`running at port ${PORT}`);
+});
+const io = require('socket.io')(server);
 
 const rooms = new Rooms();
 
@@ -126,9 +138,3 @@ io.on('connection', socket=>{
 })
 
 tryToCreateRoom({roomName: 'test-room'});
-
-app.listen(4000);
-
-app.get('/', (req,res)=>{
-    res.send('hello!');
-})
