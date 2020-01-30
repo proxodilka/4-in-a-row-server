@@ -1,4 +1,4 @@
-const {Game} = require('./game');
+const {Game} = require('../game/game');
 const generateId = ()=>Math.random().toString(36).substr(2, 9);
 
 class Rooms{

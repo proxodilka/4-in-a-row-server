@@ -1,4 +1,4 @@
-const {checkWin, getEmptyField, getInsertPosition, changeArrayElem} = require('./stuff');
+const {checkWin, getEmptyField, getInsertPosition, changeArrayElem} = require('../lib/stuff');
 
 const initValue = {
     field: getEmptyField(7,6)

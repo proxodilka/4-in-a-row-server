@@ -3,7 +3,7 @@ const cors = require('cors');
 const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
-const {Rooms} = require('./rooms');
+const {Rooms} = require('./rooms/rooms');
 
 const PORT = process.env.PORT || 80;
 
